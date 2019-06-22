@@ -1,0 +1,105 @@
+var LocalStrategy = require('passport-local').Strategy;
+var User = require('../modals/User');
+
+module.exports = function (passport) {
+
+    // serialize and deserialize users from session
+    passport.serializeUser(function (user, done) {
+        done(null, user.id);
+    });
+
+    passport.deserializeUser(function (id, done) {
+        User.findById(id, function (err, user) {
+            done(err, user);
+        });
+    });
+
+
+    // ============= SIGNUP ================
+    // =====================================
+    passport.use('register', new LocalStrategy({
+        usernameField: 'email',
+        passwordField: 'password',
+        passReqToCallback: true
+    }, function (req, email, password, done) { //callback with details from form
+        console.log("1");
+        //find for matching email form-database
+        User.findOne({'user.email': email}, function (err, user) {
+            console.log("2");
+            if (err) {
+                console.log("3");
+                return done(err); //return errors is any
+            }
+
+            //check if user already exists
+            if (user) {
+                return done(null, false, req.flash('message', 'Email already in use!'));
+
+            } else {
+                console.log("4");
+                //create instance of user
+                var newUser = new User();
+                newUser.user.account.email = email;
+                newUser.user.account.password = newUser.generateHash(password);
+                newUser.user.account.subscription = "Free";
+
+
+                console.log("5");
+                //save to database
+                newUser.save(function (err) {
+                    if (err) {
+                        throw err;
+                    }
+                    return done(null, newUser);
+                });
+            }
+        });
+
+    }));
+
+
+    // ============= SIGN IN ===============
+    // =====================================
+    passport.use('login', new LocalStrategy({
+        usernameField: 'email',
+        passwordField: 'password',
+        passReqToCallback: true
+    }, function (req, email, password, done) { // callback with details from form
+
+        //find matching details in database
+        User.findOne({'user.account.email': email}, function (err, user) {
+            if (err) { //return error if any
+                return done(err);
+            }
+
+            //return message if user not found
+            if (!user) {
+                return done(null, false, req.flash('message', 'Email not found!'));
+            }
+
+            //if email found but password is wrong
+            if (!user.validatePassword(password)) {
+                return done(null, false, req.flash('message', 'Wrong password!'));
+            }
+
+            //finally, return the user if successful
+            return done(null, user);
+        });
+    }));
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,97 @@
+/* TOP ROW */
+.symbol {
+    margin: 0px;
+}
+.symbol input.select-dropdown {
+    margin: 0px;
+    padding: 0px;
+    font-size: 0.9rem !important;
+    font-weight: 300;
+    color: #caccd6;
+    border-bottom: 0;
+    height: 21px;
+}
+
+.symbol span.caret {
+    color: #caccd6 !important;
+    top:0.3rem;
+}
+
+
+/* INITIAL ORDER */
+.initial_order .classic-tabs .nav li a.active {
+    border-color: #20c997 !important;
+    border-bottom: 1px solid;
+}
+
+
+/* ADVANCE ORDER */
+.switch label .lever {
+    width: 2rem;
+    height: 0.8rem;
+    color: red;
+}
+
+.switch label .lever:after {
+    width: 1.05rem;
+    height: 1.05rem;
+    top: -.1135rem;
+    left: -.1125rem
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+    background-color: #869bd1;
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #2e4685 ;
+    left: 1rem;
+}
+
+.form-check-input[type="checkbox"] + label::before, .form-check-input[type="checkbox"]:not(.filled-in) + label::after, label.btn input[type="checkbox"] + label::before, label.btn input[type="checkbox"]:not(.filled-in) + label::after {
+    width: 15px;
+    height: 15px;
+    top: 2px;
+}
+
+.form-check-label {
+    top: 5px;
+}
+
+.overlay-parent {
+    position:relative;
+    height: 100%;
+}
+
+.overlay{
+    position:absolute;
+    top:0px;
+    left:0px;
+    bottom:0px;
+    right:0px;
+    background-color:rgba(0,0,0,0.8);
+}
+
+/* DATATABLE */
+
+.exchange_table .classic-tabs .nav li a.active {
+    border-color: #20c997 !important;
+    border-bottom: 2px solid;
+}
+
+.exchange_table .tab-content .table td {
+    border-top: 1px solid #0c101c;
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+    bottom: .5em;
+}

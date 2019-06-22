@@ -1,0 +1,162 @@
+/* SECTION 1 (symbol and account) */
+.exchange-dropdown {
+    margin: 0px;
+}
+.exchange-dropdown input.select-dropdown {
+    margin: 0px;
+    padding: 0px;
+    font-size: 0.9rem !important;
+    font-weight: 300;
+    color: #caccd6;
+    border-bottom: 0;
+    height: 21px;
+}
+
+.exchange-dropdown span.caret {
+    color: #caccd6 !important;
+    top:0.3rem;
+}
+
+@media (max-width: 800px) {
+    .exchange-balances {
+        display: none;
+    }
+}
+
+/* SECTION 2 */
+.card-layout {
+    background: #161b2e;
+    margin-bottom: 1rem;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding: 0.5rem;
+
+    min-height: 42vh;
+}
+
+/* Initial Order */
+#initial_order_tabs .nav-item {
+    margin: 0px;
+    padding: 0px;
+}
+
+#initial_order_tabs .nav-item a {
+    margin: 0px;
+    padding: 0.5rem;
+    padding-top: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+#initial_order_tabs .nav-item a.active {
+    border-color: #20c997 !important;
+    border-bottom: 1px solid;
+}
+
+/* Advance Order  */
+.advance-order .switch label .lever {
+    width: 2rem;
+    height: 0.8rem;
+}
+
+.advance-order .switch label .lever:after {
+    width: 1.05rem;
+    height: 1.05rem;
+    top: -.1135rem;
+    left: -.1125rem
+}
+
+.advance-order .switch label input[type=checkbox]:checked+.lever {
+    background-color: #869bd1;
+}
+
+.advance-order .switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #2e4685 ;
+    left: 1rem;
+}
+
+.advance-order .overlay-parent {
+    position:relative;
+    height: 100%;
+}
+
+.advance-order .overlay{
+    position:absolute;
+    top:0px;
+    left:0px;
+    bottom:0px;
+    right:0px;
+    background-color:rgba(0,0,0,0.8);
+}
+
+/* ORDERBOOK TABLES */
+.orderbook-table-scroll {
+    position: relative;
+    height: 40vh;
+    overflow: auto;
+}
+.orderbook-table-scroll-y {
+    display: block;
+}
+
+.orderbook-table table {
+    color: #caccd6;
+    /* color: #ea0053; */
+}
+
+.orderbook-table table th {
+    padding: 0px;
+    border-color: #20273a !important;
+    border-bottom: 2px solid;
+    font-size: 0.9rem;
+}
+
+.orderbook-table table th:nth-child(1) {
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.orderbook-table table th:nth-child(3) {
+    text-align: right;
+    padding-right: 1rem;
+}
+
+.orderbook-table table td {
+    padding: 0px;
+    padding-top: 3px;
+    border-top: none;
+    font-size: 0.8rem;
+}
+
+.orderbook-table table td:nth-child(1) {
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.orderbook-table-buys table td:nth-child(1) {
+    color: #70a800;
+}
+
+.orderbook-table-sells table td:nth-child(1) {
+    color: #ea0053;
+}
+
+.orderbook-table table td:nth-child(3) {
+    text-align: right;
+    padding-right: 1rem;
+}
+
+/* Orderbook scrollbar */
+.orderbook-scrollbar::-webkit-scrollbar-track {
+-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+background-color: #161b2e;
+border-radius: 10px; }
+
+.orderbook-scrollbar::-webkit-scrollbar {
+width: 10px;
+background-color: #161b2e; }
+
+.orderbook-scrollbar::-webkit-scrollbar-thumb {
+border-radius: 10px;
+-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+background-color: #20273a; }

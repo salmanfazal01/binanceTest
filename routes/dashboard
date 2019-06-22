@@ -1,0 +1,63 @@
+var request = require("request");
+var bodyParser = require('body-parser');
+var User = require('../modals/User');
+var bcrypt = require('bcrypt-nodejs');
+
+const binance = require('../controllers/exchanges/binance.js');
+const new_order = require('../controllers/new_order.js');
+
+var urlencodedParser = bodyParser.urlencoded({extended: false});
+
+module.exports = function (app) {
+    /* GET dashboard page. */
+    app.get('/dashboard', isLoggedIn, function (req, res, next) {
+        res.render('dashboard', {title: 'TradingRoom App'});
+    });
+
+    //GET all accounts
+    app.get('/getAccounts', isLoggedIn, function (req, res, next) {
+        var accounts = [];
+        if(req.user.user.exchange_accounts.length > 0) {
+            for (var i=0; i<req.user.user.exchange_accounts.length; i++) {
+                accounts.push({
+                    id: req.user.user.exchange_accounts[i]._id,
+                    name: req.user.user.exchange_accounts[i].account_name,
+                    exchange: req.user.user.exchange_accounts[i].initialize.exchange
+                });
+            }
+            res.send(accounts);
+        } else {
+            res.send(accounts);
+        }
+
+    });
+
+    //Create new order
+    app.post('/createBotOrder/:account', isLoggedIn, function (req, res, next) {
+        User.findById(req.user._id, function (err, doc) {
+            if(err){
+                console.log(err);
+                return res.sendStatus(404);
+            }
+
+            for (var i in doc.user.exchange_accounts) {
+                if (doc.user.exchange_accounts[i]._id == req.params.account) {
+                    req.body.keys = [doc.user.exchange_accounts[i].initialize.api_key, doc.user.exchange_accounts[i].initialize.secret_key, doc._id, doc.user.exchange_accounts[i]._id];
+                }
+            }
+            new_order.initialize_trade(req.body);
+            res.sendStatus(200);
+        });
+
+    });
+
+};
+
+// Check is user is logged in
+function isLoggedIn(req, res, next) {
+    //if user is authenticated in session then carry on
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/');
+}

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap Template</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="stylesheets/mdb.min.css" rel="stylesheet">
+
+  <style>
+
+    html,
+    body,
+    header,
+    .view {
+      height: 100vh;
+    }
+
+    @media (max-width: 740px) {
+      html,
+      body,
+      header,
+      .view {
+        height: 815px;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+      html,
+      body,
+      header,
+      .view {
+        height: 650px;
+      }
+    }
+
+    .intro-2 {
+      background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img%20(11).jpg") no-repeat center center;
+      background-size: cover;
+    }
+
+    .top-nav-collapse {
+      background-color: #3f51b5 !important;
+    }
+
+    .navbar:not(.top-nav-collapse) {
+      background: transparent !important;
+    }
+
+    @media (max-width: 768px) {
+      .navbar:not(.top-nav-collapse) {
+        background: #3f51b5 !important;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+      .navbar:not(.top-nav-collapse) {
+        background: #3f51b5 !important;
+      }
+    }
+
+    .card {
+      background-color: rgba(229, 228, 255, 0.2);
+    }
+
+    .md-form label {
+      color: #ffffff;
+    }
+
+    h6 {
+      line-height: 1.7;
+    }
+
+    .card {
+      margin-top: 30px;
+      /*margin-bottom: -45px;*/
+
+    }
+
+    .md-form input[type=text]:focus:not([readonly]),
+    .md-form input[type=password]:focus:not([readonly]) {
+      border-bottom: 1px solid #8EDEF8;
+      box-shadow: 0 1px 0 0 #8EDEF8;
+    }
+
+    .md-form input[type=text]:focus:not([readonly]) + label,
+    .md-form input[type=password]:focus:not([readonly]) + label {
+      color: #8EDEF8;
+    }
+
+    .md-form .form-control {
+      color: #fff;
+    }
+
+
+  </style>
+
+</head>
+
+<body>
+
+
+<!--Main Navigation-->
+<header>
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="#"><strong>TRApp</strong></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
+              aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/exchange">Exchange</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!--Intro Section-->
+  <section class="view intro-2">
+    <div class="mask rgba-stylish-strong h-100 d-flex justify-content-center align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <!--Form with header-->
+            <div class="card wow fadeIn" data-wow-delay="0.3s">
+              <div class="card-body">
+
+                <!--Header-->
+                <div class="form-header purple-gradient">
+                  <h3><i class="fas fa-user mt-2 mb-2"></i> Log in:</h3>
+                </div>
+
+                <!--Body-->
+                <form id="login_form" action="/login" method="post" class="px-4 mb-3">
+                  <div class="md-form form-group">
+                    <input type="email" id="login_email" name="email"
+                           class="form-control" required
+                           maxlength="40"
+                           oninvalid="this.setCustomValidity('Enter a valid email address! eg. test@gmail.com')"
+                           oninput="setCustomValidity('')">
+                    <label for="login_email" >Email Address</label>
+                  </div>
+                  <div class="md-form form-group">
+                    <input type="password" id="login_password"
+                           name="password" class="form-control">
+                    <label for="login_password" >Confirm Password</label>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <button type="submit" class="btn purple-gradient btn-lg" id="login_button">Login
+                      </button>
+                    </div>
+                    <div class="col-sm-5 align-middle">
+                      <!-- show any messages that come back with authentication -->
+                      <% if (message.length > 0) { %>
+                      <div class="alert alert-danger text-center p-1 mb-0 mt-2" style="height:70%">
+                        <span class="align-middle"><%= message %></span>
+                      </div>
+                      <% } %>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+            <!--/Form with header-->
+          </div>
+          <div class="col-md-6 col-sm-12">
+
+            <!--Form with header-->
+            <div class="card wow fadeIn" data-wow-delay="0.3s">
+              <div class="card-body">
+
+                <!--Header-->
+                <div class="form-header peach-gradient">
+                  <h3><i class="fas fa-user mt-2 mb-2"></i> Register:</h3>
+                </div>
+
+                <form id="registration_form" action="/register" method="post" class="px-4 mb-3">
+                  <div class="md-form form-group">
+                    <input type="email" id="registration_email" name="email"
+                           class="form-control" required
+                           maxlength="40"
+                           oninvalid="this.setCustomValidity('Enter a valid email address! eg. test@gmail.com')"
+                           oninput="setCustomValidity('')">
+                    <label for="registration_email" >Email Address</label>
+                  </div>
+                  <div class="md-form form-group">
+                    <input type="password" id="register_password"
+                           name="password" class="form-control">
+                    <label for="register_password" >Confirm Password</label>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <button type="submit" class="btn peach-gradient btn-lg" id="registration_button">Register
+                      </button>
+                    </div>
+                    <div class="col-sm-5 align-middle">
+                      <!-- show any messages that come back with authentication -->
+                      <% if (message.length > 0) { %>
+                      <div class="alert alert-danger text-center p-1 mb-0 mt-2" style="height:70%">
+                        <span class="align-middle"><%= message %></span>
+                      </div>
+                      <% } %>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+            <!--/Form with header-->
+
+          </div>
+        </div>
+
+        <!--Error message-->
+        <div class="row mt-4">
+          <div class="align-middle white-text">
+            Error: <br>
+            <!-- show any messages that come back with authentication -->
+            <% if (message.length > 0) { %>
+            <span class="align-middle"><%= message %></span>
+            <div class="alert alert-danger text-center p-1 mb-0 mt-2" style="height:70%">
+              <span class="align-middle"><%= message %></span>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</header>
+<!--Main Navigation-->
+
+
+<!--  SCRIPTS  -->
+<!-- JQuery -->
+<script type="text/javascript" src="javascripts/jquery-3.4.0.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="javascripts/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="javascripts/mdb.min.js"></script>
+
+<script src="javascripts/index.js"></script>
+<script>
+    new WOW().init();
+
+</script>
+</body>
+
+</html>

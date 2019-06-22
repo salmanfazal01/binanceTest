@@ -1,0 +1,82 @@
+var mongoose = require('mongoose');
+var bcrypt = require('bcrypt-nodejs');
+
+var userSchema = mongoose.Schema({
+    user: {
+        account: {
+            email: String,         //login id
+            password: String,      //encrypted password
+            subscription: String
+        },
+        exchange_accounts: [
+            {
+                account_name: String,
+
+                initialize: {
+                    exchange: String,
+                    api_key: String,
+                    secret_key: String
+                },
+
+                bot_orders: [],
+                open_orders: []
+            }
+        ],
+        journals: [
+            {
+                journal_name: String,       //portfolio name
+
+                initialize: {
+                    currency: String,
+                    starting_fiat: String,
+                    starting_btc: String,
+                    starting_btc_value: String
+                },
+
+                trades: [
+                    {
+                        date: String,       //trade date
+                        exchange: String,   //exchange?
+                        coin: String,       //coin?
+                        entry: String,      // entry balance
+                        exit: String,       // exit balance
+                        notes: String       // trade notes
+                    }
+                ],
+
+                balance: {                 //portfolio holdings
+                    current_balance: String
+                },
+
+                track: [                    //data to plot graphs
+                    {
+                        date: String,
+                        number_of_trades: String,
+                        daily_balance: String
+                    }
+                ]
+
+            }
+        ]
+
+    }
+});
+
+
+// LOGIN HASHES
+//generate hash
+userSchema.methods.generateHash = function (phrase) {
+    return bcrypt.hashSync(phrase, bcrypt.genSaltSync(8), null);
+};
+
+//validating password
+userSchema.methods.validatePassword = function (password) {
+    return bcrypt.compareSync(password, this.user.account.password);
+};
+
+//validating key
+userSchema.methods.validateSecretKey = function(key) {
+    return bcrypt.compareSync(key, this.user.exchange_accounts.initialize.secret_key);
+};
+
+module.exports = mongoose.model('User', userSchema);

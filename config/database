@@ -1,0 +1,3 @@
+module.exports = {
+    'url' : 'mongodb://user:user123@ds261626.mlab.com:61626/tradingbot'
+};
